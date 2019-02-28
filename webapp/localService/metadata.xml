@@ -1,0 +1,30 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZRICO_STRU_USR_SRV" xml:lang="zh" sap:schema-version="1">
+            <EntityType Name="ZUSER" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Mandt"/>
+                    <PropertyRef Name="Usrid"/>
+                </Key>
+                <Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="集团" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Usrid" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="用户ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Usrname" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="用户名称" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Usraddr" Type="Edm.String" Nullable="false" MaxLength="55" sap:label="地址" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZRICO_STRU_USR_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZUSERSet" EntityType="ZRICO_STRU_USR_SRV.ZUSER" sap:pageable="false" sap:content-version="1"/>
+                <FunctionImport Name="UserByName" ReturnType="Collection(ZRICO_STRU_USR_SRV.ZUSER)" EntitySet="ZUSERSet" m:HttpMethod="GET">
+                    <Parameter Name="UsrName" Type="Edm.String" Mode="In" MaxLength="30"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZRICO_STRU_USR_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZRICO_STRU_USR_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
